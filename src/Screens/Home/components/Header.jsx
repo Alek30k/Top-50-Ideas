@@ -2,10 +2,10 @@ import logo from "./../../../assets/AC.png";
 
 const Header = () => {
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex justify-between items-center">
       <button className="btn btn-primary btn-sm md:btn-md">+ New Idea</button>
       <h2 className="font-bold text-sm md:text-2xl">Top 20 Ideas</h2>
-      <div className="">
+      <div className="flex gap-2 items-center">
         <img src={logo} alt="logo" className="w-10 h-10 rounded-full" />
         <h2 className="font-bold text-sm hidden md:block">
           By Alejandro Cabrera
