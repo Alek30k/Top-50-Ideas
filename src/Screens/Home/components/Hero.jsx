@@ -9,12 +9,22 @@ const Hero = () => {
         Write your best Ideas. No account needed!
       </h2>
       <div className="">
-        <select className="select select-bordered w-full max-w-xs">
+        <select className="select select-bordered border-primary w-full max-w-xs">
           <option disabled selected>
-            Who shot first?
+            Select Theme
           </option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          <option>light</option>
+          <option>dark</option>
+          <option>cupcake</option>
+          <option>bumblebee</option>
+          <option>emerald</option>
+          <option>corporate</option>
+          <option>synthwave</option>
+          <option>retro</option>
+          <option>acid</option>
+          <option>lemonade</option>
+          <option>sunset</option>
+          <option>winter</option>
         </select>
       </div>
     </div>
