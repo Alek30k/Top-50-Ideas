@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
+
 const Hero = () => {
+  const { theme, setTheme } = useContext(ThemeContext);
+
   return (
     <div className="my-10 flex flex-col items-center gap-5">
       <h2 className="text-3xl font-bold text-center">
