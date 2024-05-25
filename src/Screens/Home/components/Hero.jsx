@@ -14,7 +14,10 @@ const Hero = () => {
         Write your best Ideas. No account needed!
       </h2>
       <div className="">
-        <select className="select select-bordered border-primary w-full max-w-xs">
+        <select
+          onChange={(event) => setTheme(event.target.value)}
+          className="select select-bordered border-primary w-full max-w-xs"
+        >
           <option disabled selected>
             Select Theme
           </option>
