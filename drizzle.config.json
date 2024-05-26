@@ -2,5 +2,9 @@
   "dialect": "postgresql",
   "out": "./migrations-folder",
   "schema": "./src/db",
-  "breakpoints": false
+  "breakpoints": false,
+  "driver": "pg",
+  "dbCredentials": {
+    "connectionString": "postgresql://neondb_owner:Sjf2hNVBy1TQ@ep-dry-cherry-a5g49m69.us-east-2.aws.neon.tech/top-20-ideas?sslmode=require"
+  }
 }
