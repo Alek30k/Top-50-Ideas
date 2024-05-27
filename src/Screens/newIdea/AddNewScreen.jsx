@@ -1,15 +1,24 @@
 import { ChevronLeft, Info, Send } from "lucide-react";
 import Header from "../Home/components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { db } from "../../../utils";
 import { Ideas } from "../../../utils/schema";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 const AddNewScreen = () => {
+  const navigation = useNavigate();
   const [idea, setIdea] = useState();
   const [username, setUsername] = useState();
   const [showAlert, setShowAlert] = useState(false);
   const [existingUser, setExistingUser] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("username")) {
+      setUsername(localStorage.getItem("username"));
+      setExistingUser(true);
+    }
+  }, []);
 
   const onSavehandler = async () => {
     const result = await db
@@ -53,7 +62,7 @@ const AddNewScreen = () => {
           <span>Congratulation! Your New Idea added successfully</span>
         </div>
       )}
-      <button className="btn mt-7">
+      <button className="btn mt-7" onClick={() => navigation("/")}>
         <ChevronLeft />
         Back
       </button>
@@ -69,22 +78,24 @@ const AddNewScreen = () => {
           placeholder="Write your Idea"
         ></textarea>
       </div>
-      <div className="flex flex-col mt-7 gap-2">
-        <label className="flex justify-between">
-          Your Username *
-          <span className="flex items-center gap-2 text-sm">
-            <Info className="h-4 w-4" />
-            No Account Needed
-          </span>
-        </label>
-        <input
-          type="text"
-          value={username}
-          placeholder="Username"
-          onChange={(event) => setUsername(event.target.value)}
-          className="input input-bordered w-full border-primary"
-        />
-      </div>
+      {!existingUser && (
+        <div className="flex flex-col mt-7 gap-2">
+          <label className="flex justify-between">
+            Your Username *
+            <span className="flex items-center gap-2 text-sm">
+              <Info className="h-4 w-4" />
+              No Account Needed
+            </span>
+          </label>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(event) => setUsername(event.target.value)}
+            className="input input-bordered w-full border-primary"
+          />
+        </div>
+      )}
       <button
         className="btn w-full btn-primary mt-7"
         disabled={!(idea && username)}
