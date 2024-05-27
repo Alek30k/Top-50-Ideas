@@ -2,7 +2,7 @@ import { integer, pgTable, serial, varchar } from "drizzle-orm/pg-core";
 
 export const Ideas = pgTable("ideas", {
   id: serial("id").primaryKey(),
-  constent: varchar("content").notNull(),
+  content: varchar("content").notNull(),
   username: varchar("username").notNull(),
   vote: integer("vote").default(0),
   createdAt: varchar("createdAt").notNull(),

@@ -1,7 +1,7 @@
 {
   "dialect": "postgresql",
   "out": "./migrations-folder",
-  "schema": "./src/db",
+  "schema": "./utils/schema.js",
   "breakpoints": false,
   "driver": "pg",
   "dbCredentials": {
