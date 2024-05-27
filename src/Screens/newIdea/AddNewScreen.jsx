@@ -9,6 +9,7 @@ const AddNewScreen = () => {
   const [idea, setIdea] = useState();
   const [username, setUsername] = useState();
   const [showAlert, setShowAlert] = useState(false);
+  const [existingUser, setExistingUser] = useState(false);
 
   const onSavehandler = async () => {
     const result = await db
@@ -22,7 +23,8 @@ const AddNewScreen = () => {
 
     if (result) {
       localStorage.setItem("username", username);
-      console.log("Insert data");
+      setUsername("");
+      setIdea("");
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
@@ -34,7 +36,7 @@ const AddNewScreen = () => {
     <div className="">
       <Header />
       {showAlert && (
-        <div role="alert" className="alert alert-success mt-5">
+        <div role="alert" className="alert alert-success mt-5 shadow-lg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="stroke-current shrink-0 h-6 w-6"
@@ -48,7 +50,7 @@ const AddNewScreen = () => {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span>Your purchase has been confirmed!</span>
+          <span>Congratulation! Your New Idea added successfully</span>
         </div>
       )}
       <button className="btn mt-7">
@@ -61,6 +63,7 @@ const AddNewScreen = () => {
       <div className="flex flex-col mt-7 gap-2">
         <label>Your Idea *</label>
         <textarea
+          value={idea}
           onChange={(event) => setIdea(event.target.value)}
           className="textarea textarea-bordered border-primary"
           placeholder="Write your Idea"
@@ -76,6 +79,7 @@ const AddNewScreen = () => {
         </label>
         <input
           type="text"
+          value={username}
           placeholder="Username"
           onChange={(event) => setUsername(event.target.value)}
           className="input input-bordered w-full border-primary"
