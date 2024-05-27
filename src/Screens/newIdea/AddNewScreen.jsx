@@ -1,7 +1,21 @@
 import { ChevronLeft, Info, Send } from "lucide-react";
 import Header from "../Home/components/Header";
+import { useState } from "react";
+import { db } from "../../../utils";
+import { Ideas } from "../../../utils/schema";
 
 const AddNewScreen = () => {
+  const [idea, setIdea] = useState();
+  const [username, setUsername] = useState();
+
+  const onSavehandler = async () => {
+    const result = await db.insert(Ideas).values({
+      content: idea,
+      username: username,
+      createdAt,
+    });
+  };
+
   return (
     <div className="">
       <Header />
@@ -16,6 +30,7 @@ const AddNewScreen = () => {
       <div className="flex flex-col mt-7 gap-2">
         <label>Your Idea *</label>
         <textarea
+          onChange={(event) => setIdea(event.target.value)}
           className="textarea textarea-bordered border-primary"
           placeholder="Write your Idea"
         ></textarea>
@@ -31,10 +46,15 @@ const AddNewScreen = () => {
         <input
           type="text"
           placeholder="Username"
+          onChange={(event) => setUsername(event.target.value)}
           className="input input-bordered w-full border-primary"
         />
       </div>
-      <button className="btn w-full btn-primary mt-7">
+      <button
+        className="btn w-full btn-primary mt-7"
+        disabled={!(idea && username)}
+        onClick={() => onSavehandler()}
+      >
         Send
         <Send className="h-4 w-4" />
       </button>
