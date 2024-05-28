@@ -6,11 +6,11 @@ export const upvote = (id) => {
         downvotes: [],
       };
 
-  if (votes.upvotes.indexOf(id) !== -1) {
+  if (votes.upvotes?.indexOf(id) !== -1) {
     return false;
   }
 
-  votes.upvotes.push(id);
+  votes.upvotes?.push(id);
 
   const downVotes = votes.downvotes?.filter((item) => item != id);
   votes.downvotes = downVotes;
@@ -45,7 +45,7 @@ export const downvote = (id) => {
 export const checkIsAlreadyUpVoted = (id) => {
   const votes = JSON.parse(localStorage.getItem("votes"));
 
-  return votes.upvotes.find((item) => item === id);
+  return votes.upvotes?.find((item) => item === id);
 };
 
 export const checkIsAlreadyDownVoted = (id) => {
