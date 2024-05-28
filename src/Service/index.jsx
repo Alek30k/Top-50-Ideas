@@ -6,14 +6,18 @@ export const upvote = (id) => {
         downvotes: [],
       };
 
+  if (!votes) {
+    return; // Manejar el caso donde votes es nulo
+  }
+
   if (votes.upvotes?.indexOf(id) !== -1) {
     return false;
   }
 
   votes.upvotes?.push(id);
 
-  //   const downVotes = votes.downvotes?.filter((item) => item != id);
-  //   votes.downvotes = downVotes;
+  const downVotes = votes.downvotes?.filter((item) => item != id);
+  votes.downvotes = downVotes;
 
   localStorage.setItem("votes", JSON.stringify(votes));
 
@@ -34,8 +38,8 @@ export const downvote = (id) => {
 
   votes.downvotes.push(id);
 
-  //   const upVotes = votes.upvotes?.filter((item) => item != id);
-  //   votes.upvotes = upVotes;
+  const upVotes = votes.upvotes?.filter((item) => item != id);
+  votes.upvotes = upVotes;
 
   localStorage.setItem("votes", JSON.stringify(votes));
 
