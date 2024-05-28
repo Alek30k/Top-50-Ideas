@@ -1,8 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
 
 const Hero = () => {
   const { theme, setTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("selectedTheme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
 
   return (
     <div className="my-10 flex flex-col items-center gap-5">
@@ -15,7 +22,11 @@ const Hero = () => {
       </h2>
       <div className="">
         <select
-          onChange={(event) => setTheme(event.target.value)}
+          onChange={(event) => {
+            const selectedTheme = event.target.value;
+            setTheme(selectedTheme); // Actualizar el estado del tema
+            localStorage.setItem("selectedTheme", selectedTheme); // Almacenar en localStorage
+          }}
           className="select select-bordered border-primary w-full max-w-xs"
         >
           <option disabled selected>
