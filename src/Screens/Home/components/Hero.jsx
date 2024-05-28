@@ -33,6 +33,29 @@ const Hero = () => {
           <option>lemonade</option>
           <option>sunset</option>
           <option>winter</option>
+          <option>lofi</option>
+          <option>valentine</option>
+          <option>halloween</option>
+          <option>garden</option>
+          <option>forest</option>
+          <option>aqua</option>
+          <option>pastel</option>
+          <option>fantasy</option>
+          <option>wireframe</option>
+          <option>luxury</option>
+          <option>dracula</option>
+          <option>cmyk</option>
+          <option>autumn</option>
+          <option>business</option>
+          <option>night</option>
+          <option>coffee</option>
+          <option>dim</option>
+          <option>nord</option>
+          <option>cyberpunk</option>
+          <option>synthwave</option>
+          <option>emerald</option>
+          <option>dracula</option>
+          <option>dracula</option>
         </select>
       </div>
     </div>
