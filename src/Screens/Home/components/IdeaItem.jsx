@@ -1,7 +1,12 @@
 import { eq } from "drizzle-orm";
 import { Ideas } from "../../../../utils/schema";
 import { db } from "./../../../../utils/index";
-import { checkIsAlreadyUpVote, downvote, upvote } from "../../../Service";
+import {
+  checkIsAlreadyDownVoted,
+  checkIsAlreadyUpVoted,
+  downvote,
+  upvote,
+} from "../../../Service";
 
 const IdeaItem = ({ idea, index, refreshData }) => {
   const upVoteHandler = async () => {
@@ -45,7 +50,7 @@ const IdeaItem = ({ idea, index, refreshData }) => {
         <div className="flex flex-col items-center">
           <h2
             className={`text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2 ${
-              checkIsAlreadyUpVote(idea.id) && "bg-slate-300"
+              checkIsAlreadyUpVoted(idea.id) && "bg-slate-300"
             }`}
             onClick={() => upVoteHandler()}
           >
@@ -53,7 +58,9 @@ const IdeaItem = ({ idea, index, refreshData }) => {
           </h2>
           <h2 className="text-lg rounded-md p-1 font-bold">{idea?.vote}</h2>
           <h2
-            className="text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2"
+            className={`text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2 ${
+              checkIsAlreadyDownVoted(idea.id) && "bg-slate-300"
+            }`}
             onClick={() => downVote()}
           >
             👎
