@@ -1,10 +1,15 @@
 import IdeaItem from "./IdeaItem";
 
-const IdeaList = ({ ideaList }) => {
+const IdeaList = ({ ideaList, refreshData }) => {
   return (
     <div className="">
-      {ideaList.map((idea, index) => (
-        <IdeaItem idea={idea} key={index} index={index} />
+      {ideaList?.map((idea, index) => (
+        <IdeaItem
+          idea={idea}
+          key={index}
+          index={index}
+          refreshData={refreshData}
+        />
       ))}
     </div>
   );

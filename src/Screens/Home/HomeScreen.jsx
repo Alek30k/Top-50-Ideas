@@ -31,7 +31,7 @@ const HomeScreen = () => {
       <Header />
       <Hero />
       <Tabs />
-      <IdeaList ideaList={ideaList} />
+      <IdeaList ideaList={ideaList} refreshData={GetAllIdeas} />
     </div>
   );
 };
