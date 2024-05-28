@@ -41,3 +41,9 @@ export const downvote = (id) => {
 
   return true;
 };
+
+export const checkIsAlreadyUpVote = (id) => {
+  const votes = JSON.parse(localStorage.getItem("VOTES"));
+
+  return votes.upvotes.find((item) => item === id);
+};

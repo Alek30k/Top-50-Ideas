@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { Ideas } from "../../../../utils/schema";
 import { db } from "./../../../../utils/index";
-import { upvote } from "../../../Service";
+import { downvote, upvote } from "../../../Service";
 
 const IdeaItem = ({ idea, index, refreshData }) => {
   const upVoteHandler = async () => {
@@ -20,17 +20,19 @@ const IdeaItem = ({ idea, index, refreshData }) => {
     }
   };
 
-  const dowVote = async () => {
-    const result = await db
-      .update(Ideas)
-      .set({
-        vote: idea.vote - 1,
-      })
-      .where(eq(Ideas.id, idea.id))
-      .returning({ id: Ideas.id });
+  const downVote = async () => {
+    if (downvote(idea.id)) {
+      const result = await db
+        .update(Ideas)
+        .set({
+          vote: idea.vote - 1,
+        })
+        .where(eq(Ideas.id, idea.id))
+        .returning({ id: Ideas.id });
 
-    if (result) {
-      refreshData();
+      if (result) {
+        refreshData();
+      }
     }
   };
 
@@ -50,7 +52,7 @@ const IdeaItem = ({ idea, index, refreshData }) => {
           <h2 className="text-lg rounded-md p-1 font-bold">{idea?.vote}</h2>
           <h2
             className="text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2"
-            onClick={() => dowVote()}
+            onClick={() => downVote()}
           >
             👎
           </h2>
