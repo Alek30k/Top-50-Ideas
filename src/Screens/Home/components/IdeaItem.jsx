@@ -1,19 +1,22 @@
 import { eq } from "drizzle-orm";
 import { Ideas } from "../../../../utils/schema";
 import { db } from "./../../../../utils/index";
+import { upvote } from "../../../Service";
 
 const IdeaItem = ({ idea, index, refreshData }) => {
   const upVoteHandler = async () => {
-    const result = await db
-      .update(Ideas)
-      .set({
-        vote: idea.vote + 1,
-      })
-      .where(eq(Ideas.id, idea.id))
-      .returning({ id: Ideas.id });
+    if (upvote(idea.id)) {
+      const result = await db
+        .update(Ideas)
+        .set({
+          vote: idea.vote + 1,
+        })
+        .where(eq(Ideas.id, idea.id))
+        .returning({ id: Ideas.id });
 
-    if (result) {
-      refreshData();
+      if (result) {
+        refreshData();
+      }
     }
   };
 
