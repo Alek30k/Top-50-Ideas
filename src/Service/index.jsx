@@ -43,7 +43,13 @@ export const downvote = (id) => {
 };
 
 export const checkIsAlreadyUpVote = (id) => {
-  const votes = JSON.parse(localStorage.getItem("VOTES"));
+  const votes = JSON.parse(localStorage.getItem("votes"));
+
+  return votes.upvotes.find((item) => item === id);
+};
+
+export const checkIsAlreadyDownVote = (id) => {
+  const votes = JSON.parse(localStorage.getItem("votes"));
 
   return votes.upvotes.find((item) => item === id);
 };

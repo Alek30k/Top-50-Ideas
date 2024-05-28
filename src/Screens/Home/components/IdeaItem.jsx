@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { Ideas } from "../../../../utils/schema";
 import { db } from "./../../../../utils/index";
-import { downvote, upvote } from "../../../Service";
+import { checkIsAlreadyUpVote, downvote, upvote } from "../../../Service";
 
 const IdeaItem = ({ idea, index, refreshData }) => {
   const upVoteHandler = async () => {
@@ -44,7 +44,9 @@ const IdeaItem = ({ idea, index, refreshData }) => {
         </h2>
         <div className="flex flex-col items-center">
           <h2
-            className="text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2"
+            className={`text-lg hover:bg-gray-200 rounded-md p-1 cursor-pointer px-2 ${
+              checkIsAlreadyUpVote(idea.id) && "bg-slate-300"
+            }`}
             onClick={() => upVoteHandler()}
           >
             🔥
