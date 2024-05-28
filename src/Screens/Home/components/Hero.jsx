@@ -54,8 +54,6 @@ const Hero = () => {
           <option>cyberpunk</option>
           <option>synthwave</option>
           <option>emerald</option>
-          <option>dracula</option>
-          <option>dracula</option>
         </select>
       </div>
     </div>
