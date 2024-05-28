@@ -6,11 +6,12 @@ import { db } from "./../../../utils/index";
 import { Ideas } from "../../../utils/schema";
 import { useEffect, useState } from "react";
 import { desc } from "drizzle-orm";
+import IdeaList from "./components/IdeaList";
 
 const HomeScreen = () => {
   const params = useLocation();
 
-  const [ideasList, setIdeasList] = useState([]);
+  const [ideaList, setIdeaList] = useState([]);
 
   useEffect(() => {
     GetAllIdeas();
@@ -22,7 +23,7 @@ const HomeScreen = () => {
       .from(Ideas)
       .orderBy(desc(params.hash == "#hot" ? Ideas.vote : Ideas.id))
       .limit(20);
-    setIdeasList(result);
+    setIdeaList(result);
   };
 
   return (
@@ -30,6 +31,7 @@ const HomeScreen = () => {
       <Header />
       <Hero />
       <Tabs />
+      <IdeaList ideaList={ideaList} />
     </div>
   );
 };
