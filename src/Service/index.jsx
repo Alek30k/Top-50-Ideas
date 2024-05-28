@@ -4,12 +4,20 @@ export const upvote = (id) => {
       ? JSON.parse(localStorage.getItem("votes"))
       : {
           upvotes: [],
-          downvote: [],
+          downvotes: [],
         };
 
     if (votes.upvotes.indexOf(id) !== -1) {
       return false;
     }
+
     votes.upvotes.push(id);
+
+    const downVotes = votes.downvotes?.filter((item) => item != id);
+    votes.downvotes = downVotes;
+
+    localStorage.setItem("votes", JSON.stringify(votes));
+
+    return true;
   }
 };
