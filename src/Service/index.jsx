@@ -13,7 +13,7 @@ export const upvote = (id) => {
   votes.upvotes?.push(id);
 
   const downVotes = votes.downvotes?.filter((item) => item != id);
-  votes.downvotes = downVotes;
+  //   votes.downvotes = downVotes;
 
   localStorage.setItem("votes", JSON.stringify(votes));
 
@@ -35,7 +35,7 @@ export const downvote = (id) => {
   votes.downvotes.push(id);
 
   const upVotes = votes.upvotes?.filter((item) => item != id);
-  votes.upvotes = upVotes;
+  //   votes.upvotes = upVotes;
 
   localStorage.setItem("votes", JSON.stringify(votes));
 
