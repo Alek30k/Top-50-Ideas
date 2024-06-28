@@ -1,8 +1,7 @@
-# React + Vite
+# Top-20-Ideas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React, Vite, TailwindCss, Dirzzle ORM  + PostgreSql
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Selección_002](https://github.com/Alek30k/Top-50-Ideas/assets/101005998/41bb8207-c76c-47a7-bcd5-c00e4136ac0d)
+![Selección_015](https://github.com/Alek30k/Top-50-Ideas/assets/101005998/ed582194-d380-4cc6-8c9a-d12bef454762)
+![Selección_014](https://github.com/Alek30k/Top-50-Ideas/assets/101005998/d19908e3-b378-404f-8665-bad378bf0217)
